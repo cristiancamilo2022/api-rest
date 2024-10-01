@@ -28,8 +28,8 @@ jobs:
       - name: Upload WAR file
         uses: actions/upload-artifact@v3
         with:
-          name: afcastellanosv-war
-          path: target/afcastellanosv-1.0.1.war
+          name: ccmesab-war
+          path: target/ccmesab-1.0.1.war
       
       - name: List target directory contents
         run: ls -l target
@@ -42,13 +42,13 @@ jobs:
       - name: Download WAR artifact
         uses: actions/download-artifact@v3
         with:
-          name: afcastellanosv-war
+          name: ccmesab-war
 
       - name: List target directory contents
         run: ls -l ./
 
       - name: Rename WAR file
-        run: mv afcastellanosv-1.0.1.war afcastellanosv.war
+        run: mv ccmesab-1.0.1.war ccmesab.war
 
       - name: Install sshpass
         run: sudo apt-get update && sudo apt-get install -y sshpass
@@ -65,7 +65,7 @@ jobs:
           username: sshtesting
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
-          source: "afcastellanosv.war"
+          source: "ccmesab.war"
           target: ${{ secrets.SERVER_IP }}
 
   test:
